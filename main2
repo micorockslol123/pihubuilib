@@ -104,7 +104,7 @@ elseif game.PlaceId == 4442272183 then
 elseif game.PlaceId == 7449423635 then
     World3 = true
 end
-
+_G.KillAura = false
 function CheckQuest() 
     MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
     if World1 then
@@ -2556,7 +2556,7 @@ if World1 then
                                         FastMon = v.HumanoidRootPart.CFrame
                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
                                         TP1(v.HumanoidRootPart.CFrame * Pos)
-                                        game:GetService("VirtualUser"):CaptureController()
+                                        
                                         _G.KillAura = true
                                     until not _G.Farmfast or not v.Parent or v.Humanoid.Health <= 0
                                     StardMag = false
@@ -2694,7 +2694,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not _G.AutoDoughtBoss or not v.Parent or v.Humanoid.Health <= 0
@@ -2723,7 +2723,7 @@ spawn(function()
                                                 MagnetDought = true
                                                 PosMonDoughtOpenDoor = v.HumanoidRootPart.CFrame
                                                 topos(v.HumanoidRootPart.CFrame * Pos)
-                                                game:GetService("VirtualUser"):CaptureController()
+                                                
                                                 _G.KillAura = true
                                             until not _G.AutoDoughtBoss or not v.Parent or v.Humanoid.Health <= 0 or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or KillMob == 0
                                         _G.KillAura = false
@@ -2790,7 +2790,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not _G.AutoDoughtBoss or not v.Parent or v.Humanoid.Health <= 0
@@ -2974,7 +2974,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autodoughking or not v.Parent or v.Humanoid.Health <= 0
@@ -3040,7 +3040,7 @@ spawn(function()
                                     StartMagnetBoneMon = true
                                     PosMonBone = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Auto_Bone or not v.Parent or v.Humanoid.Health <= 0
                             _G.KillAura = false
@@ -3977,7 +3977,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                 until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
@@ -4011,7 +4011,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
                                     topos(v.HumanoidRootPart.CFrame * (Farm_pos))
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                 until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
@@ -4099,7 +4099,7 @@ spawn(function()
                                     PosMon = v.HumanoidRootPart.CFrame
                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.AutoFarmMob or not v.Parent or v.Humanoid.Health <= 0
                                 SelectMag = false
@@ -4891,7 +4891,7 @@ spawn(function()
                                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                     v.HumanoidRootPart.CFrame = OldCFrameSecond
                                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                                    game:GetService("VirtualUser"):CaptureController()
+                                                    
                                                     _G.KillAura = true
                                                     sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                                 until not _G.AutoSecondSea or not v.Parent or v.Humanoid.Health <= 0
@@ -4976,7 +4976,7 @@ spawn(function()
                                 AutoHaki()         
                                 EquipWeapon(_G.SelectWeapon)           
                                 topos(CFrame.new(448.46756, 199.356781, -441.389252))                                  
-                                game:GetService("VirtualUser"):CaptureController()
+                                
                                 _G.KillAura = true
                             until v.Humanoid.Health <= 0 or _G.AutoFactory == false
                         _G.KillAura = false
@@ -5175,7 +5175,7 @@ spawn(function()
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                             topos(v.HumanoidRootPart.CFrame * Pos)
-                                            game:GetService("VirtualUser"):CaptureController()
+                                            
                                             _G.KillAura = true
                                         until _G.Namfon == false or v.Humanoid.Health <= 0 or not v.Parent
                                         _G.KillAura = false
@@ -5317,7 +5317,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autogay or not v.Parent or v.Humanoid.Health <= 0
@@ -5849,7 +5849,7 @@ spawn(function()
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                             topos(v.HumanoidRootPart.CFrame * Pos)
-                                            game:GetService("VirtualUser"):CaptureController()
+                                            
                                             _G.KillAura = true
                                             sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                         until _G.AutoElitehunter == false or v.Humanoid.Health <= 0 or not v.Parent
@@ -6137,7 +6137,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Radioactive or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6192,7 +6192,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Makori_gay or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6247,7 +6247,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Umm or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6297,7 +6297,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Umm or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6352,7 +6352,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Auto_Wing or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6407,7 +6407,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Leather or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6457,7 +6457,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Leather or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6507,7 +6507,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not _G.Leather or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6562,7 +6562,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Scrap or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6612,7 +6612,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Scrap or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6662,7 +6662,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Scrap or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6717,7 +6717,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Cocoafarm or not v.Parent or v.Humanoid.Health <= 0
                                 _G.KillAura = false
@@ -6772,7 +6772,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Dragon_Scale or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6827,7 +6827,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Gunpowder or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6882,7 +6882,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not Fish or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -6937,7 +6937,7 @@ spawn(function()
                                     MakoriGayMag = true
                                     PosGay = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not MiniHee or not v.Parent or v.Humanoid.Health <= 0
                                 MakoriGayMag = false
@@ -7036,7 +7036,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not _G.AutoBudySword or not v.Parent or v.Humanoid.Health <= 0
@@ -7521,7 +7521,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autotushita or not v.Parent or v.Humanoid.Health <= 0
@@ -7590,7 +7590,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.AutoCarvender or not v.Parent or v.Humanoid.Health <= 0
@@ -7643,7 +7643,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.AutoTwinHook or not v.Parent or v.Humanoid.Health <= 0
@@ -7696,7 +7696,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Auto_Dragon_Trident or not v.Parent or v.Humanoid.Health <= 0
@@ -7749,7 +7749,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autowaden or not v.Parent or v.Humanoid.Health <= 0
@@ -7802,7 +7802,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autopole or not v.Parent or v.Humanoid.Health <= 0
@@ -7855,7 +7855,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.Autosaw or not v.Parent or v.Humanoid.Health <= 0
@@ -7948,7 +7948,7 @@ spawn(function()
                                                     v.Humanoid.WalkSpeed = 0
                                                     v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
                                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                                    game:GetService("VirtualUser"):CaptureController()
+                                                    
                                                     _G.KillAura = true
                                                     sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                                     until v.Humanoid.Health <= 0 or not _G.Auto_Saber
@@ -8961,7 +8961,7 @@ spawn(function()
                                             }
                                             game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
                                         else
-                                            game:GetService("VirtualUser"):CaptureController()
+                                            
                                             _G.KillAura = true
                                         end
                                     end)
@@ -9754,7 +9754,7 @@ spawn(function()
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                     sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                                 until not  _G.autoLawRaid or not v.Parent or v.Humanoid.Health <= 0
@@ -11524,7 +11524,7 @@ spawn(function()
                                     FarmMag = true
                                     PosGG = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not StardFarm or not v.Parent or v.Humanoid.Health <= 0
                             _G.KillAura = false
@@ -12080,7 +12080,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
                                     Min_XT_Is_Kak = true
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not  _G.AutoTerrorshark or not v.Parent or v.Humanoid.Health <= 0
                                 Min_XT_Is_Kak = false
@@ -12123,7 +12123,7 @@ spawn(function()
                                     PosNarathiwat = v.HumanoidRootPart.CFrame
                                     topos(v.HumanoidRootPart.CFrame * Pos)
                                     Min_XT_Is_Kak = true
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not  FarmShark or not v.Parent or v.Humanoid.Health <= 0
                                 Min_XT_Is_Kak = false
@@ -12166,7 +12166,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
                                     Min_XT_Is_Kak = true
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not  _G.farmpiranya or not v.Parent or v.Humanoid.Health <= 0
                                 Min_XT_Is_Kak = false
@@ -12209,7 +12209,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     Min_XT_Is_Kak = true
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService("VirtualUser"):CaptureController()
+                                    
                                     _G.KillAura = true
                                 until not  _G.Fish_Crew_Member or not v.Parent or v.Humanoid.Health <= 0
                                 Min_XT_Is_Kak = false
@@ -12292,7 +12292,7 @@ spawn(function()
                pcall(function()
                     if CheckPirateBoat() then
                         AutoHaki()
-                        game:GetService("VirtualUser"):CaptureController()
+                        
                         for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                             if v:IsA("Tool") then
                                 if v.ToolTip == "Melee" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
@@ -12379,7 +12379,7 @@ spawn(function()
                         AutoHaki()
                         EquipWeapon(_G.SelectWeapon)
                         TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,300,0))
-                        game:GetService("VirtualUser"):CaptureController()
+                        
                         _G.KillAura = true
                     else
                         _G.KillAura = false
