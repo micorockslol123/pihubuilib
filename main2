@@ -2373,7 +2373,7 @@ spawn(function()
                                     if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
                                         repeat task.wait()
                                             EquipWeapon(_G.SelectWeapon)
-                                            --AutoHaki()                                            
+                                            AutoHaki()                                            
                                             PosMon = v.HumanoidRootPart.CFrame
                                             TP1(v.HumanoidRootPart.CFrame * Pos)
                                             v.HumanoidRootPart.CanCollide = false
