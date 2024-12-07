@@ -10008,14 +10008,18 @@ spawn(function()
 		end);
 	end;
 end);
-MiscTab:Toggle("FE Invisible", true, false, function(value)
+MiscTab:Toggle("FE Invisible", false, false, function(value)
 	_G.InvisibleFE = value;
 end);
 spawn(function()
 	while task.wait() do
 		pcall(function()
 			if _G.InvisibleFE then
-game:GetService("Players").LocalPlayer.Character:WaitForChild("LowerTorso"):Destroy()
+			    if game.Players.LocalPlayer.Character:FindFirstChild("LowerTorso") then
+game:GetService("Players").LocalPlayer.Character.LowerTorso:Destroy()
+else
+    repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("LowerTorso")
+    end
 			end;
 		end);
 	end;
