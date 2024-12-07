@@ -2174,6 +2174,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
          pcall(function()
             game:GetService'VirtualUser':CaptureController()
             game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+wait()
         end)
     end
 end)
@@ -2564,15 +2565,14 @@ spawn(function()
 			                	}
 			                	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 			               	end
-			                --topos(v.HumanoidRootPart.CFrame * Pos)
+			                topos(v.HumanoidRootPart.CFrame * Pos)
 			                v.HumanoidRootPart.CanCollide = false
-			                Fastattack = true
+			                --Fastattack = true
 			                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
 						    game:GetService("VirtualUser"):CaptureController()
 				       	    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
 				       	    AutoFarmNearestMagnet = true
 				       	    PosMon = v.HumanoidRootPart.CFrame
-wait()
 			            until not _G.AutoFarmNearest or not v.Parent or v.Humanoid.Health <= 0 
 			            AutoFarmNearestMagnet = false
 			            Fastattack = false
