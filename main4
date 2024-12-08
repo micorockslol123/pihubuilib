@@ -3328,7 +3328,6 @@ task.spawn(
             if MakoriGayMag and _G.BringMonster then
                 for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if not string.find(v.Name, "Boss") then
-                        if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosGay
                             v.Humanoid.JumpPower = 0
                             v.Humanoid.WalkSpeed = 0
@@ -3342,7 +3341,6 @@ task.spawn(
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
                             task.wait(0.1)
-                        end
                     end
                 end
             end
