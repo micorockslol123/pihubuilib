@@ -3714,8 +3714,7 @@ if World2 then
 									AutoHaki();
 									EquipWeapon(_G.SelectWeapon);
 									topos(CFrame.new(448.46756, 199.356781, -441.389252));
-									(game:GetService("VirtualUser")):CaptureController();
-									(game:GetService("VirtualUser")):Button1Down(Vector2.new(1280, 672));
+						AttackNoCD();
 								until v.Humanoid.Health <= 0 or _G.AutoFactory == false;
 							end;
 						end;
