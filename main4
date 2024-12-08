@@ -3344,9 +3344,7 @@ task.spawn(
                     end
                 end
             end
-        end
-    end
-)
+        end)
 
 function BringMob()
     if not BringMobChoosen then
