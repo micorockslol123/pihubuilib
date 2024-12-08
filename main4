@@ -3327,7 +3327,7 @@ task.spawn(
         while task.wait() do
             if MakoriGayMag and _G.BringMonster then
                 for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if not string.find(v.Name, "Boss") and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 450 then
+                    if not string.find(v.Name, "Boss") and  (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 450) then
                         if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosGay
                             v.Humanoid.JumpPower = 0
