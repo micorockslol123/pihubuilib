@@ -3322,33 +3322,6 @@ function InMyNetWork(object)
     end
 end
 
-task.spawn(function()
-    while task.wait() do
-        if MakoriGayMag and _G.BringMonster then
-            for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                if not string.find(v.Name, "Boss") then
-                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CFrame = PosGay
-                        v.Humanoid.JumpPower = 0
-                        v.Humanoid.WalkSpeed = 0
-                        v.HumanoidRootPart.Size = Vector3.new(70, 70, 70)
-                        v.HumanoidRootPart.Transparency = 1
-                        v.HumanoidRootPart.CanCollide = false
-                        if v.Head then
-                            v.Head.CanCollide = false
-                        end
-                        if v.Humanoid:FindFirstChild("Animator") then
-                            v.Humanoid.Animator:Destroy()
-                        end
-                        v.Humanoid:ChangeState(Enum.HumanoidStateType.Physics) -- Using a cleaner state change
-                        task.wait(0.1)
-                    end
-                end
-            end
-        end
-    end
-end)
-
 function BringMob()
     if not BringMobChoosen then
         repeat
