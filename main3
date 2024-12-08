@@ -3708,7 +3708,7 @@ if World2 then
 				if _G.AutoFactory then
 					if (game:GetService("Workspace")).Enemies:FindFirstChild("Core") then
 						for i, v in pairs((game:GetService("Workspace")).Enemies:GetChildren()) do
-							if v.Name == "Core" and v.Humanoid.Health > 0 and not workspace.Map.Dressrosa.SmileFactory.Core:FindFirstChild("Glass") or workspace.Map.Dressrosa.SmileFactory.Core:FindFirstChild("Glass").Transparency == 1 then
+							if v.Name == "Core" and v.Humanoid.Health > 0 and not workspace.Map.Dressrosa.SmileFactory.Core:FindFirstChild("Glass") then
 								repeat
 									task.wait();
 									AutoHaki();
