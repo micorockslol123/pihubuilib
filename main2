@@ -111,6 +111,69 @@ spawn(function()
     end
 end)
 
+local plr = game.Players.LocalPlayer
+local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
+local CbFw2 = CbFw[2]
+function GetCurrentBlade() 
+    local p13 = CbFw2.activeController
+    local ret = p13.blades[1]
+    if not ret then return end
+    while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
+    return ret
+end
+function AttackNoCD() 
+    local AC = CbFw2.activeController
+        for i,v in game.Players.LocalPlayer.Backpack:GetChildren() do
+if v:FindFirstChild("Nickname") and v:FindFirstChild("Nickname").Value == "godhuman" then
+v.Parent = game.Players.LocalPlayer.Character
+end
+end
+    for i = 1, 1 do 
+        local bladehit = require(game.ReplicatedStorage.CombatFramework.RigLib).getBladeHits(
+            plr.Character,
+            {plr.Character.HumanoidRootPart},
+            60
+        )
+        local cac = {}
+        local hash = {}
+        for k, v in pairs(bladehit) do
+            if v.Parent:FindFirstChild("HumanoidRootPart") and not hash[v.Parent] then
+                table.insert(cac, v.Parent.HumanoidRootPart)
+                hash[v.Parent] = true
+            end
+        end
+        bladehit = cac
+        if #bladehit > 0 then
+            local u8 = debug.getupvalue(AC.attack, 5)
+            local u9 = debug.getupvalue(AC.attack, 6)
+            local u7 = debug.getupvalue(AC.attack, 4)
+            local u10 = debug.getupvalue(AC.attack, 7)
+            local u12 = (u8 * 798405 + u7 * 727595) % u9
+            local u13 = u7 * 798405
+            (function()
+                u12 = (u12 * u9 + u13) % 1099511627776
+                u8 = math.floor(u12 / u9)
+                u7 = u12 - u8 * u9
+            end)()
+            u10 = u10 + 1
+            debug.setupvalue(AC.attack, 5, u8)
+            debug.setupvalue(AC.attack, 6, u9)
+            debug.setupvalue(AC.attack, 4, u7)
+            debug.setupvalue(AC.attack, 7, u10)
+            pcall(function()
+                for k, v in pairs(AC.animator.anims.basic) do
+                    v:Play()
+                end                  
+            end)
+            if plr.Character:FindFirstChildOfClass("Tool") and AC.blades and AC.blades[1] then
+                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(u12 / 1099511627776 * 16777215), u10)
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, i, "")
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(GetCurrentBlade())) wait()
+            end
+        end
+    end
+end
+
 if game.PlaceId == 2753915549 then
     World1 = true
 elseif game.PlaceId == 4442272183 then
@@ -1875,8 +1938,7 @@ function fly()
 end
 
 function Click()
-    game:GetService'VirtualUser':CaptureController()
-    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+ AttackNoCd()
 end
 
 function AutoHaki()
@@ -2182,17 +2244,6 @@ spawn(function()
     end
 end)
 
-spawn(function()
-game:GetService("RunService").RenderStepped:Connect(function()
-    if _G.AutoClick or Fastattack then
-         pcall(function()
-            game:GetService'VirtualUser':CaptureController()
-            game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-        end)
-    end
-end)
-end)
-
 function StopTween(target)
     if not target then
         _G.StopTween = true
@@ -2456,8 +2507,7 @@ spawn(function()
                                             v.Head.CanCollide = false
                                             v.HumanoidRootPart.Size = Vector3.new(70,70,70)
                                             StartMagnet = true
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.AutoFarm or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
                                         StartMagnet = false
@@ -2581,8 +2631,7 @@ spawn(function()
 			                v.HumanoidRootPart.CanCollide = false
 			                Fastattack = true
 			                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						    game:GetService("VirtualUser"):CaptureController()
-				       	    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
+AttackNoCd()
 				       	    AutoFarmNearestMagnet = true
 				       	    PosMon = v.HumanoidRootPart.CFrame
 			            until not _G.AutoFarmNearest or not v.Parent or v.Humanoid.Health <= 0 
@@ -2802,8 +2851,7 @@ spawn(function()
                                             v.HumanoidRootPart.Size = Vector3.new(70,70,70)
                                             MagnetDought = true
                                             PosMonDoughtOpenDoor = v.HumanoidRootPart.CFrame
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.AutoDoughtBoss or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false or v.Humanoid.Health <= 0 or game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince [Lv. 2300] [Raid Boss]") or KillMob == 0
                                     else
                                         MagnetDought = false
@@ -2879,8 +2927,7 @@ spawn(function()
                                             end
                                             MagnetDought = true
                                             PosMonDoughtOpenDoor = v.HumanoidRootPart.CFrame
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.AutoDoughtBoss or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
                                         UseSkillKub = false
@@ -3069,8 +3116,7 @@ spawn(function()
                                             v.Head.CanCollide = false
                                             v.HumanoidRootPart.Size = Vector3.new(70,70,70)
                                             StartMagnetBoneMon = true
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.Auto_Bone or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
                                         StartMagnetBoneMon = false
@@ -3144,8 +3190,7 @@ spawn(function()
                                                 v.Head.CanCollide = false
                                             end
                                             StartMagnetBoneMon = true
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.Auto_Bone or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
                                         UseSkillKub = false
@@ -3325,8 +3370,7 @@ spawn(function()
                                                 v.Head.CanCollide = false
                                             end
                                             StartMasteryFruitMagnet = true
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         until not _G.AutoFarmFruitMastery or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
                                         UseSkill = false
@@ -3731,8 +3775,7 @@ spawn(function()
                                                 v.Head.CanCollide = false               
                                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                 TP1(v.HumanoidRootPart.CFrame * Pos)
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                             end
                                             StartMasteryGunMagnet = true 
                                             PosMonMasteryGun = v.HumanoidRootPart.CFrame
@@ -3802,8 +3845,7 @@ spawn(function()
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                                 v.Head.CanCollide = false                                                
                                             else
                                                 AutoHaki()
@@ -3813,8 +3855,7 @@ spawn(function()
                                                 v.Head.CanCollide = false               
                                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                                 TP1(v.HumanoidRootPart.CFrame * Pos)
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                             end
                                             AutoSwordMasteryMag = true 
                                             PosMon = v.HumanoidRootPart.CFrame
@@ -3999,8 +4040,7 @@ spawn(function()
                                 v.Head.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(80,80,80)
                                 topos(v.HumanoidRootPart.CFrame*Pos)
-                                game:GetService'VirtualUser':CaptureController()
-                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                 sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
                             until v.Humanoid.Health <= 0 or _G.AutoAllBoss == false or not v.Parent
                         end
@@ -4893,8 +4933,7 @@ spawn(function()
                                         v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid.WalkSpeed = 0
-                                        game:GetService'VirtualUser':CaptureController()
-                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
                                         sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                     until _G.AutoThirdSea == false or v.Humanoid.Health <= 0 or not v.Parent
@@ -5068,8 +5107,7 @@ spawn(function()
                                                     v.HumanoidRootPart.CanCollide = false
                                                     v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,20,0)
                                                     topos(CFrame.new(-10160.787109375, 138.6616973876953, 5955.03076171875))
-                                                    game:GetService'VirtualUser':CaptureController()
-                                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                                 end
                                             end
                                         end
@@ -5362,8 +5400,7 @@ spawn(function()
                                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                             topos(v.HumanoidRootPart.CFrame * Pos)
                                             v.HumanoidRootPart.CanCollide = false
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                             MusketeerHatMon = v.HumanoidRootPart.CFrame
                                             StartMagnetMusketeerhat = true
                                         end)
@@ -5625,8 +5662,7 @@ spawn(function()
                                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                             topos(v.HumanoidRootPart.CFrame * Pos)													
                                             PosMonBarto =  v.HumanoidRootPart.CFrame
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                             AutoBartiloBring = true
                                         until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartilo == false or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                         AutoBartiloBring = false
@@ -5656,8 +5692,7 @@ spawn(function()
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     v.HumanoidRootPart.CFrame = OldCFrameBartlio
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService'VirtualUser':CaptureController()
-                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                     sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
                                 until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartilo == false
                             end
@@ -6920,8 +6955,7 @@ spawn(function()
                                     v.Head.CanCollide = false
                                     v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                     topos(v.HumanoidRootPart.CFrame * Pos)
-                                    game:GetService'VirtualUser':CaptureController()
-                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                     EctoplasmMon = v.HumanoidRootPart.CFrame
                                     StartEctoplasmMagnet = true
                                 else
@@ -7947,8 +7981,7 @@ spawn(function()
                                 v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                 RengokuMon = v.HumanoidRootPart.CFrame
                                 topos(v.HumanoidRootPart.CFrame * Pos)
-                                game:GetService'VirtualUser':CaptureController()
-                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                                 StartRengokuMagnet = true
                             until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hidden Key") or _G.AutoRengoku == false or not v.Parent or v.Humanoid.Health <= 0
                             StartRengokuMagnet = false
@@ -8853,8 +8886,7 @@ Player:Toggle("Teleport To Selected Player", false, function(value)
     while _G.Teleport do task.wait()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 0)
         game.Players:FindFirstChild(_G.SelectPly).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
     end
 end)
 
@@ -8949,8 +8981,7 @@ spawn(function()
                             Useskill = true
                             topos(v.HumanoidRootPart.CFrame * CFrame.new(1,7,3))								
                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                            game:GetService'VirtualUser':CaptureController()
-                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+AttackNoCd()
                         until _G.AutoPlayerHunter == false or v.Humanoid.Health <= 0
                         Useskill = false
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
@@ -11355,8 +11386,7 @@ spawn(function()
 			                UseskillKill = true
 			                v.HumanoidRootPart.CanCollide = false
 			                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-						    game:GetService("VirtualUser"):CaptureController()
-				       	    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
+AttackNoCd()
 			            until not _G.AutoKillTial or not v.Parent or v.Humanoid.Health <= 0 
 			            UseskillKill = false
 			        end
