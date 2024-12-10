@@ -2,7 +2,7 @@ repeat
     wait()
 until game.Players.LocalPlayer
 local a = "https://you.whimper.xyz/sources/pihub/lib/bf.lua"
-local a = loadstring(game:HttpGet(a))()
+local a = loadstring(game:HttpGet(a,true))()
 local a = a:Window("BloxFruit")
 local Set = a:Tab("Settings Farm ", "rbxassetid://18899804355")
 local Main = a:Tab("Auto Farm", "rbxassetid://18899804355")
@@ -18,8 +18,7 @@ local Esp = a:Tab("Esp Player", "rbxassetid://18899804355")
 local Shop = a:Tab("Shopee", "rbxassetid://18899804355")
 local Misc = a:Tab("Miscellaneous", "rbxassetid://18899804355")
 -----------------------------------------------------------------------------------------------------------------------------Function
-
-assert(getrawmetatable)
+if getrawmetatable and setreadonly and newcclosure then
     grm = getrawmetatable(game)
     setreadonly(grm, false)
     old = grm.__namecall
@@ -49,8 +48,22 @@ assert(getrawmetatable)
             return
         end
         return old(self, ...)
-end)
-
+    end)
+end
+local _tbl
+_tbl=function(t)
+    return setmetatable(t or {},{
+        __index=function()
+            return _tbl()
+        end,
+        __call=function()return _tbl() end
+    })
+end
+local _require=require
+local require=function(...)
+    local success,result = pcall(_require,...)
+    return success and result or _tbl()
+end
 getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync
 getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
 _G.setfflag = true
@@ -2175,6 +2188,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
          pcall(function()
             game:GetService'VirtualUser':CaptureController()
             game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+task.wait()
         end)
     end
 end)
