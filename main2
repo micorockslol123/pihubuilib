@@ -121,7 +121,7 @@ function GetCurrentBlade()
     while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
     return ret
 end
-function AttackNoCD() 
+function AttackNoCd() 
     local AC = CbFw2.activeController
         for i,v in game.Players.LocalPlayer.Backpack:GetChildren() do
 if v:FindFirstChild("Nickname") and v:FindFirstChild("Nickname").Value == "godhuman" then
