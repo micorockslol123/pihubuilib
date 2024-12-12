@@ -3088,7 +3088,7 @@ spawn(function()
 								wait();
 								if (game:GetService("Workspace")):FindFirstChild(v.Name) then
 									TP3(v.CFrame);
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.TouchInterest, 0)
+   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 0)
 								end;
 							until AutoFarmChest == false or (not v.Parent);
 							topos((game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.CFrame);
