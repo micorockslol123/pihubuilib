@@ -2675,18 +2675,7 @@ spawn(function()
 			pcall(function()
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
 				if (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-					if BypassTP then
-						if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Elite.Position).Magnitude > 1500 then
-							BTP(Elite);
-						elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Elite.Position).Magnitude < 1500 then
-							topos(Elite);
-						end;
-					else
-						topos(Elite);
-					end;
-					if (Vector3.new((-5418.892578125), 313.74130249023, (-2826.2260742188)) - (game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
-						(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("EliteHunter");
-					end;
+(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("EliteHunter");
 				elseif (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 					if string.find(QuestTitle, "Diablo") or string.find(QuestTitle, "Deandre") or string.find(QuestTitle, "Urban") then
 						if (game:GetService("Workspace")).Enemies:FindFirstChild("Diablo") or (game:GetService("Workspace")).Enemies:FindFirstChild("Deandre") or (game:GetService("Workspace")).Enemies:FindFirstChild("Urban") then
