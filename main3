@@ -2651,8 +2651,10 @@ spawn(function()
 		pcall(function()
 			if (game:GetService("ReplicatedStorage")):FindFirstChild("Diablo") or (game:GetService("ReplicatedStorage")):FindFirstChild("Deandre") or (game:GetService("ReplicatedStorage")):FindFirstChild("Urban") or (game:GetService("Workspace")).Enemies:FindFirstChild("Diablo") or (game:GetService("Workspace")).Enemies:FindFirstChild("Deandre") or (game:GetService("Workspace")).Enemies:FindFirstChild("Urban") then
 				Elite_Hunter_Status:Set("Status : Elite Spawn!");
+_G.EliteSpawnValue = true
 			else
 				Elite_Hunter_Status:Set("Status : Elite Not Spawn");
+_G.EliteSpawnValue = false
 			end;
 		end);
 	end;
@@ -2668,7 +2670,7 @@ end);
 local Elite = CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188);
 spawn(function()
 	while wait() do
-		if _G.AutoElitehunter and World3 then
+		if _G.AutoElitehunter and World3 and _G.EliteSpawnValue then
 			pcall(function()
 				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
 				if (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == false then
