@@ -2667,50 +2667,58 @@ end);
 MainTab:Button("Check Progress", function()
 	Alert:create("Elite Hunter Progress : " .. (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("EliteHunter", "Progress"));
 end);
-local Elite = CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188);
+local Elite = CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188)
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+
 spawn(function()
-	while wait() do
-		if _G.AutoElitehunter and World3 and _G.EliteHunterValue then
-			pcall(function()
-				local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
-				if (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("EliteHunter");
-end
-				if (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-					if string.find(QuestTitle, "Diablo") or string.find(QuestTitle, "Deandre") or string.find(QuestTitle, "Urban") then
-						if (game:GetService("Workspace")).Enemies:FindFirstChild("Diablo") or (game:GetService("Workspace")).Enemies:FindFirstChild("Deandre") or (game:GetService("Workspace")).Enemies:FindFirstChild("Urban") then
-							for i, v in pairs((game:GetService("Workspace")).Enemies:GetChildren()) do
-								if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
-									if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-										repeat
-											task.wait(_G.FastAttackDelay);
-											AutoHaki();
-											EquipWeapon(_G.SelectWeapon);
-											v.HumanoidRootPart.CanCollide = false;
-											v.Humanoid.WalkSpeed = 0;
-											v.HumanoidRootPart.Size = Vector3.new(50, 50, 50);
-											topos(v.HumanoidRootPart.CFrame * Pos);
-											AttackNoCD();
-										until _G.AutoElitehunter == false or v.Humanoid.Health <= 0 or (not v.Parent);
-									end;
-								end;
-							end;
-						elseif (game:GetService("ReplicatedStorage")):FindFirstChild("Diablo") then
-BTP((game:GetService("ReplicatedStorage")):FindFirstChild("Diablo")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));)
-							topos(((game:GetService("ReplicatedStorage")):FindFirstChild("Diablo")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));
-						elseif (game:GetService("ReplicatedStorage")):FindFirstChild("Deandre") then
-BTP((game:GetService("ReplicatedStorage")):FindFirstChild("Deandre")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));)
-							topos(((game:GetService("ReplicatedStorage")):FindFirstChild("Deandre")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));
-						elseif (game:GetService("ReplicatedStorage")):FindFirstChild("Urban") then
-BTP((game:GetService("ReplicatedStorage")):FindFirstChild("Urban")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));)
-							topos(((game:GetService("ReplicatedStorage")):FindFirstChild("Urban")).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));
-						end;
-					end;
-				end;
-			end);
-		end;
-	end;
-end);
+    while wait() do
+        if _G.AutoElitehunter and World3 and _G.EliteHunterValue then
+            pcall(function()
+                local player = Players.LocalPlayer
+                local questGui = player.PlayerGui.Main.Quest
+                local questTitle = questGui.Container.QuestTitle.Title.Text
+                
+                if not questGui.Visible then
+                    ReplicatedStorage.Remotes.CommF_:InvokeServer("EliteHunter")
+                end
+
+                if questGui.Visible then
+                    if string.find(questTitle, "Diablo") or string.find(questTitle, "Deandre") or string.find(questTitle, "Urban") then
+                        if Workspace.Enemies:FindFirstChild("Diablo") or Workspace.Enemies:FindFirstChild("Deandre") or Workspace.Enemies:FindFirstChild("Urban") then
+                            for i, v in pairs(Workspace.Enemies:GetChildren()) do
+                                if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
+                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                        repeat
+                                            task.wait(_G.FastAttackDelay)
+                                            AutoHaki()
+                                            EquipWeapon(_G.SelectWeapon)
+                                            v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+                                            topos(v.HumanoidRootPart.CFrame * Pos)
+                                            AttackNoCD()
+                                        until not _G.AutoElitehunter or v.Humanoid.Health <= 0 or not v.Parent
+                                    end
+                                end
+                            end
+                        elseif ReplicatedStorage:FindFirstChild("Diablo") then
+                            BTP(ReplicatedStorage.Diablo.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                            topos(ReplicatedStorage.Diablo.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                        elseif ReplicatedStorage:FindFirstChild("Deandre") then
+                            BTP(ReplicatedStorage.Deandre.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                            topos(ReplicatedStorage.Deandre.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                        elseif ReplicatedStorage:FindFirstChild("Urban") then
+                            BTP(ReplicatedStorage.Urban.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                            topos(ReplicatedStorage.Urban.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
 MainTab:Seperator("Bone Farm");
 local ListB = {
 	"No Quest",
