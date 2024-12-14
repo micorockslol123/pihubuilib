@@ -130,7 +130,7 @@ task.spawn(function ()
     end
 end)
 
-getgenv().AntiKickClient = true
+getgenv().AntiKickClient = false
 Main_Home:addToggle("Anti Kick Client", getgenv().AntiKickClient, function(Value)
     getgenv().AntiKickClient = Value
 end)
