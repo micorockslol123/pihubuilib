@@ -3013,22 +3013,19 @@ _G.MagnitudeAdd = 0;
 spawn(function()
 	while wait() do
 		if _G.AutoFarmChest then
-			for i, v in pairs((game:GetService("Workspace")):GetChildren()) do
-				if v.Name:find("Chest") then
-					if (game:GetService("Workspace")):FindFirstChild(v.Name) then
-						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
+			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
+			    if v:FindFirstChild("RootPart") then
+						if (v.RootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
-								if (game:GetService("Workspace")):FindFirstChild(v.Name) then
-									topos(v.CFrame);
-								end;
+topos(v.RootPart.CFrame);
 							until AutoFarmChest == false or (not v.Parent);
 							topos((game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.CFrame);
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
-					end;
-				end;
+					end
+				
 			end;
 		end;
 	end;
@@ -3059,9 +3056,8 @@ _G.MagnitudeAdd = 0;
 spawn(function()
 	while wait() do
 		if _G.AutoChestMirage then
-			for i, v in pairs((game:GetService("Workspace")):GetChildren()) do
+			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
 				if v.Name:find("FragChest") then
-					if (game:GetService("Workspace")):FindFirstChild(v.Name) then
 						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
@@ -3073,7 +3069,6 @@ spawn(function()
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
-					end;
 				end;
 			end;
 		end;
@@ -3083,22 +3078,19 @@ _G.MagnitudeAdd = 0;
 spawn(function()
 	while wait() do
 		if _G.ChestBypass then
-			for i, v in pairs((game:GetService("Workspace")):GetChildren()) do
-				if v.Name:find("Chest") then
-					if (game:GetService("Workspace")):FindFirstChild(v.Name) then
-						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
+			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
+				if v.Name:find("Chest") and v:FindFirstChild("RootPart") then
+						if (v.RootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
-								if (game:GetService("Workspace")):FindFirstChild(v.Name) then
-									TP3(v.CFrame);
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v, 0)
-								end;
-							until AutoFarmChest == false or (not v.Parent);
+									TP3(v.RootPart.CFrame);
+   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.PushBox, 0)
+							until AutoFarmChest == false or (not v);
 							topos((game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.CFrame);
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
-					end;
+					
 				end;
 			end;
 		end;
