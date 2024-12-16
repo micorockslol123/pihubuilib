@@ -1,6 +1,6 @@
 local Update = (loadstring(game:HttpGet("https://you.whimper.xyz/sources/relzhub/dep/pc.lua")))();
 local Alert = (loadstring(game:HttpGet("https://you.whimper.xyz/sources/relzhub/dep/alert.lua")))();
-local Library = Update:Window("Blox Fruits");
+local Library = Update:Window("Blox Fruits (nullisgangster)");
 local MainTab = Library:Tab("Main", "rbxassetid://10723407389");
 local SettingsTab = Library:Tab("Setting", "rbxassetid://10734950309");
 local HoldTab = Library:Tab("Hold Skill", "rbxassetid://10734984606");
@@ -1705,10 +1705,6 @@ function fly()
 	end);
 	start();
 end;
-function Click()
-	(game:GetService("VirtualUser")):CaptureController();
-	(game:GetService("VirtualUser")):Button1Down(Vector2.new(1280, 672));
-end;
 function AutoHaki()
 	if not (game:GetService("Players")).LocalPlayer.Character:FindFirstChild("HasBuso") then
 		(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("Buso");
@@ -3013,19 +3009,22 @@ _G.MagnitudeAdd = 0;
 spawn(function()
 	while wait() do
 		if _G.AutoFarmChest then
-			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
-			    if v:FindFirstChild("RootPart") then
-						if (v.RootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
+			for i, v in pairs((game:GetService("Workspace")):GetChildren()) do
+				if v.Name:find("Chest") then
+					if (game:GetService("Workspace")):FindFirstChild(v.Name) then
+						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
-topos(v.RootPart.CFrame);
+								if (game:GetService("Workspace")):FindFirstChild(v.Name) then
+									topos(v.CFrame);
+								end;
 							until AutoFarmChest == false or (not v.Parent);
 							topos((game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.CFrame);
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
-					end
-				
+					end;
+				end;
 			end;
 		end;
 	end;
@@ -3056,8 +3055,9 @@ _G.MagnitudeAdd = 0;
 spawn(function()
 	while wait() do
 		if _G.AutoChestMirage then
-			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
+			for i, v in pairs((game:GetService("Workspace")):GetChildren()) do
 				if v.Name:find("FragChest") then
+					if (game:GetService("Workspace")):FindFirstChild(v.Name) then
 						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
@@ -3069,6 +3069,7 @@ spawn(function()
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
+					end;
 				end;
 			end;
 		end;
@@ -3079,18 +3080,18 @@ spawn(function()
 	while wait() do
 		if _G.ChestBypass then
 			for i, v in pairs((game:GetService("Workspace").ChestModels):GetChildren()) do
-				if v.Name:find("Chest") and v:FindFirstChild("RootPart") then
+				if v:FindFirstChild("RootPart") then
 						if (v.RootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 + _G.MagnitudeAdd then
 							repeat
 								wait();
+								if v:FindFirstChild("RootPart") then
 									TP3(v.RootPart.CFrame);
-   firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.PushBox, 0)
-							until AutoFarmChest == false or (not v);
+								end;
+							until AutoFarmChest == false or (not v.Parent);
 							topos((game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.CFrame);
 							_G.MagnitudeAdd = _G.MagnitudeAdd + 1500;
 							break;
 						end;
-					
 				end;
 			end;
 		end;
@@ -4181,7 +4182,8 @@ if World2 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+										(game:GetService("VirtualUser")):CaptureController();
+AttackNoCD()
 									until not _G.Makori_gay or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4233,7 +4235,7 @@ if World1 or World2 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Umm or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4279,7 +4281,7 @@ AttackNoCd(v.HumanoidRootPart)
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Umm or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4331,7 +4333,7 @@ if World1 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Auto_Wing or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4383,7 +4385,7 @@ if World1 or World2 or World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Leather or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4429,7 +4431,7 @@ AttackNoCd(v.HumanoidRootPart)
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Leather or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4475,7 +4477,7 @@ AttackNoCd(v.HumanoidRootPart)
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Leather or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4531,7 +4533,7 @@ if World1 or World2 or World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Scrap or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4577,7 +4579,7 @@ AttackNoCd(v.HumanoidRootPart)
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Scrap or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4623,7 +4625,7 @@ AttackNoCd(v.HumanoidRootPart)
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Scrap or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4675,7 +4677,7 @@ if World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Cocoafarm or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4727,7 +4729,7 @@ if World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Dragon_Scale or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4779,7 +4781,7 @@ if World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Gunpowder or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4831,7 +4833,7 @@ if World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not Fish or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -4883,7 +4885,7 @@ if World3 then
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not MiniHee or (not v.Parent) or v.Humanoid.Health <= 0;
 									StartBring = false;
 								end;
@@ -5095,7 +5097,7 @@ spawn(function()
 									v.Humanoid.WalkSpeed = 0;
 									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50);
 									topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 								until not _G.AutoBudySword or (not v.Parent) or v.Humanoid.Health <= 0;
 							end;
 						end;
@@ -5214,7 +5216,7 @@ spawn(function()
 												v.HumanoidRootPart.CanCollide = false;
 												v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 20, 0);
 												topos(CFrame.new(-10160.787109375, 138.6616973876953, 5955.03076171875));
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 											end;
 										end;
 									end;
@@ -5402,7 +5404,7 @@ spawn(function()
 										StartBring = true;
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
-										Click();
+										AttackNoCD(v.HumanoidRootPart)
 									end;
 								end;
 							end;
@@ -5504,7 +5506,7 @@ spawn(function()
 								v.HumanoidRootPart.CanCollide = false;
 								PosMon = v.HumanoidRootPart.CFrame;
 								MonFarm = v.Name;
-								Click();
+								AttackNoCD(v.HumanoidRootPart)
 								if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
 									v.Humanoid.Animator:Destroy();
 								end;
@@ -5550,7 +5552,7 @@ spawn(function()
 											v.HumanoidRootPart.CanCollide = false;
 											PosMon = v.HumanoidRootPart.CFrame;
 											MonFarm = v.Name;
-											Click();
+											AttackNoCD(v.HumanoidRootPart)
 											if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
 												v.Humanoid.Animator:Destroy();
 											end;
@@ -5627,7 +5629,7 @@ spawn(function()
 									v.HumanoidRootPart.CanCollide = false;
 									PosMon = v.HumanoidRootPart.CFrame;
 									MonFarm = v.Name;
-									Click();
+									AttackNoCD(v.HumanoidRootPart)
 									if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
 										v.Humanoid.Animator:Destroy();
 									end;
@@ -5662,7 +5664,7 @@ spawn(function()
 										v.HumanoidRootPart.CanCollide = false;
 										PosMon = v.HumanoidRootPart.CFrame;
 										MonFarm = v.Name;
-										Click();
+										AttackNoCD(v.HumanoidRootPart)
 										if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
 											v.Humanoid.Animator:Destroy();
 										end;
@@ -5691,7 +5693,7 @@ spawn(function()
 											v.HumanoidRootPart.CanCollide = false;
 											PosMon = v.HumanoidRootPart.CFrame;
 											MonFarm = v.Name;
-											Click();
+											AttackNoCD(v.HumanoidRootPart)
 											if v.Humanoid.Health <= 0 and v.Humanoid:FindFirstChild("Animator") then
 												v.Humanoid.Animator:Destroy();
 											end;
@@ -5803,7 +5805,7 @@ spawn(function()
 										v.Humanoid.WalkSpeed = 0;
 										v.HumanoidRootPart.Size = Vector3.new(50, 50, 50);
 										topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 									until not _G.Autotushita or (not v.Parent) or (game:GetService("Players")).LocalPlayer.Backpack:FindFirstChild("Tushita") or v.Humanoid.Health <= 0;
 								end;
 							end;
@@ -5835,7 +5837,7 @@ spawn(function()
 									v.Humanoid.WalkSpeed = 0;
 									v.HumanoidRootPart.Size = Vector3.new(50, 50, 50);
 									topos(v.HumanoidRootPart.CFrame * Pos);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 								until not _G.AutoCarvender or (not v.Parent) or v.Humanoid.Health <= 0;
 							end;
 						end;
@@ -8377,7 +8379,7 @@ spawn(function()
 											};
 											(game:GetService("Players")).LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args));
 										else
-AttackNoCd(v.HumanoidRootPart)
+											AttackNoCD(v.HumanoidRootPart)
 										end;
 									end);
 								end);
@@ -8435,7 +8437,7 @@ spawn(function()
 							Useskill = true;
 							topos(v.HumanoidRootPart.CFrame * CFrame.new(1, 7, 3));
 							v.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 						until _G.AutoPlayerHunter == false or v.Humanoid.Health <= 0;
 						Useskill = false;
 						(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("AbandonQuest");
@@ -8475,7 +8477,7 @@ spawn(function()
 					[2] = ((game:GetService("Players")):FindFirstChild(PlayerSelectAimbot)).Character.HumanoidRootPart
 				};
 				(game:GetService("Players")).LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args));
-AttackNoCd(v.HumanoidRootPart)
+AttackNoCD(v.HumanoidRootPart)
 			end);
 		end;
 	end;
